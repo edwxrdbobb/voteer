@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import Navbar from "@/components/Navbar";
+import "./globals.css";
 import { ReactNode } from 'react'
 
 interface LayoutProps {
@@ -7,12 +8,15 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Head>
+   <html lang="eng" >
+      <head>
         <title>Pageantry Voting System</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className="container mx-auto px-4 py-8">{children}</main>
-    </div>
+      </head>
+      <body>
+        <Navbar />
+          <main className="container bg-gray-900">{children}</main>
+      </body>
+   </html>
   )
 }
