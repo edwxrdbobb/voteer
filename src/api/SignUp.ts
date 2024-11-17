@@ -11,8 +11,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf8'))
 
     // Check if user already exists
-    if (users.find((user: any) => user.email === email)) {
-      return res.status(400).json({ message: 'User already exists' })
+
+    // Find user
+    const user = users.find((user: { email: string; password: string; id: string }) => user.email === email && user.password === password)
+
+    if (user) {
+      // In a real application, you would generate and return a JWT token here
+      res.status(200).json({ message: 'Login successful', userId: user.id })
+    } else {
+      res.status(401).json({ message: 'Invalid user credentials' })
     }
 
     // Add new user

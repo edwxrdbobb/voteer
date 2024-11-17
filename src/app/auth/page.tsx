@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Navbar from '../components/Navbar'
+// import Navbar from '../components/Navbar'
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true)
@@ -43,7 +43,7 @@ export default function AuthPage() {
         setError(data.message || 'An error occurred')
       }
     } catch (err) {
-      setError('An error occurred. Please try again.')
+      setError(`An error occurred. ${err} Please try again`)
     } finally {
       setLoading(false)
     }

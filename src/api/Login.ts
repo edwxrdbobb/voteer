@@ -11,7 +11,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf8'))
 
     // Find user
-    const user = users.find((user: any) => user.email === email && user.password === password)
+    const user = users.find((user: { email: string; password: string; id: string }) => user.email === email && user.password === password)
 
     if (user) {
       // In a real application, you would generate and return a JWT token here
